@@ -1,10 +1,7 @@
 .PHONY: serve example_jieba clean
 
-serve: env
-	fab serve
-
-example_jieba: env
-	fab example_jieba
+fetch: env
+	fab fetch
 
 env: requirements.txt
 	fab setup

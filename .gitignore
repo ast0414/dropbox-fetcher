@@ -5,6 +5,8 @@ dist
 env
 *.pyc
 
+# system related
+.DS_Store
 
 # java related
 *.class

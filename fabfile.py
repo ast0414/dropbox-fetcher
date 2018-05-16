@@ -3,13 +3,12 @@
 # http://docs.fabfile.org/en/1.5/tutorial.html
 from fabric.api import *
 
-project = "hello-fabric"
+project = "dropbox-fetcher"
 
 # the user to use for the remote commands
 env.user = ''
 # the servers where the commands are executed
 env.hosts = []
-
 
 def reset():
     """Reset local debug env."""
@@ -24,14 +23,8 @@ def setup():
     reset()
     local("pip install -r requirements.txt")
 
-
-def example_jieba():
-    """Example of using jieba"""
+def fetch():
+    """Start fetcher"""
     reset()
-    local("python3 hello/examples/hello_jieba.py")
+    local("python3 fetcher.py")
 
-
-def serve():
-    """Example of starting a flask based http service"""
-    reset()
-    local("python3 serve.py run")
