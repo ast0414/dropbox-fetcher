@@ -8,7 +8,6 @@ from hello.examples.flask.app import create_app
 app = create_app()
 manager = Manager(app)
 
-
 @manager.command
 def run():
     """Run in local machine."""

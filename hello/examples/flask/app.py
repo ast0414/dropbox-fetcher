@@ -1,14 +1,11 @@
 import os
 
-from flask import Flask, request, render_template, redirect
-from flask_babel import Babel
+# from flask import Flask, request, render_template, redirect
+from flask import Flask, render_template, redirect
 
 from .config import FlaskDefaultConfig
 from .echo import example
-# from .extensions import db, mail, cache, login_manager, jwt
-from .extensions import mail, cache, oid
-
-# from flask_uploads import configure_uploads
+from .extensions import load_extensions
 
 # from .utils import INSTANCE_FOLDER_PATH
 
@@ -65,47 +62,7 @@ def configure_jinja(app):
 
 
 def configure_extensions(app):
-    # flask-sqlalchemy
-    # db.init_app(app)
-
-    # flask-mail
-    mail.init_app(app)
-
-    # flask-cache
-    cache.init_app(app)
-
-    # flask-babel
-    babel = Babel(app)
-
-    @babel.localeselector
-    def get_locale():
-        accept_languages = app.config.get('ACCEPT_LANGUAGES')
-        return request.accept_languages.best_match(accept_languages)
-
-    # flask-login
-    # login_manager.login_view = 'frontend.login'
-    # login_manager.refresh_view = 'frontend.reauth'
-
-    # @login_manager.user_loader
-    # def load_user(id):
-    #     from imbalance.examples.flask.user.models import User
-    #     user = User()
-    #     user = user.get_by_id(id)
-    #     if user is not None:
-    #         session['id'] = str(user.id)
-    #     else:
-    #         session['id'] = -1
-    #     return user
-    #
-    # login_manager.init_app(app)
-
-    # flask-openid
-    oid.init_app(app)
-
-    # flask_jwt
-    # jwt.init_app(app)
-    pass
-
+    load_extensions(app)
 
 def configure_blueprints(app, blueprints):
     """Configure blueprints in views."""
@@ -168,5 +125,6 @@ def configure_error_handlers(app):
 
 # def configure_uploads_handlers(app):
 #     from .examples.flask.upload.views import pdf_uploads, img_uploads
+#     from flask_uploads import configure_uploads
 #     configure_uploads(app, (img_uploads, pdf_uploads,))
 #     pass

@@ -3,7 +3,7 @@
 # http://docs.fabfile.org/en/1.5/tutorial.html
 from fabric.api import *
 
-project = "hello"
+project = "hello-fabric"
 
 # the user to use for the remote commands
 env.user = ''
@@ -18,13 +18,11 @@ def reset():
     execfile(activate_this, dict(__file__=activate_this))
     local("which python3")
 
-
 def setup():
     """Setup virtual env."""
     local("virtualenv env")
     reset()
-    local("pip install .")
-
+    local("pip install -r requirements.txt")
 
 
 def example_jieba():

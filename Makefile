@@ -1,19 +1,15 @@
+.PHONY: serve example_jieba clean
 
-
-.PHONY: run clean
-
-serve: .setup
+serve: env
 	fab serve
 
-example_jieba: .setup
+example_jieba: env
 	fab example_jieba
 
-.setup: setup.py
+env: requirements.txt
 	fab setup
-	> $@
 
 clean:
-	@rm -rf .setup
 	@rm -rf *.egg-info
 	@rm -rf env
 	@rm -rf build
