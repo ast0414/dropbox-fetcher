@@ -8,7 +8,7 @@
 + [virtualenv](https://virtualenv.pypa.io/en/stable/)
 + [fabric](http://www.fabfile.org/) -- Note: fabric is a build tool. You can use either version py2 or py3. If you are using py3, please install it using command `pip3 install fabric3` instead of `pip3 install fabric`
 
-A example to initialize the environment in linux from zero:
+An example to initialize the environment in linux from zero:
 
 ```bash
 cd $HOME/src
