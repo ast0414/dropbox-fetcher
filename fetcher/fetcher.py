@@ -130,11 +130,12 @@ class Fetcher(object):
                             output_file = "%s/%s" % (output_base, relative_path)
                             mkdirs(output_file)
                             output_file = "%s/%s" % (output_file, name)
-                            current_rev = self.meta_rev.get("%s/%s" % (relative_path, name))
+                            meta_key = "%s/%s" % (relative_path, name)
+                            current_rev = self.meta_rev.get(meta_key)
                             if rev != current_rev:
                                 self.safe_download(output_file, curr_url, path='/%s/%s' % (
                                     base, name))
-                                self.meta_rev[output_file] = rev
+                                self.meta_rev[meta_key] = rev
                                 self.meta_rev.sync()
                             else:
                                 # print("skip... %s" % output_file)
