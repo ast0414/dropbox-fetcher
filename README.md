@@ -11,7 +11,7 @@
 ### Configure
 
 ```bash
-cp config.yml{.template}
+cp config.yml{.template,}
 # edit config.yml 
 ```
 
