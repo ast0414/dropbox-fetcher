@@ -124,12 +124,13 @@ class Fetcher(object):
                         if self.test_filter_rule(name):
                             rev = entry.rev
                             # size = entry.size
-                            output_file = output_base
+                            relative_path = "" 
                             if len(base) > 0:
-                                output_file = "%s/%s" % (output_file, base)
+                                relative_path = base
+                            output_file = "%s/%s" % (output_base, relative_path)
                             mkdirs(output_file)
                             output_file = "%s/%s" % (output_file, name)
-                            current_rev = self.meta_rev.get(output_file)
+                            current_rev = self.meta_rev.get("%s/%s" % (relative_path, name))
                             if rev != current_rev:
                                 self.safe_download(output_file, curr_url, path='/%s/%s' % (
                                     base, name))
