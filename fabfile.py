@@ -30,3 +30,10 @@ def fetch():
     """Start fetcher"""
     reset()
     local("python3 fetcher.py")
+
+
+def console():
+    """Start a ipy shell"""
+    reset()
+    local("pip install ipython > /dev/null 2>&1")
+    local("ipython")

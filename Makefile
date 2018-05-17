@@ -3,6 +3,9 @@
 fetch: env
 	fab fetch
 
+console: env
+	fab console
+
 env: requirements.txt
 	fab setup
 

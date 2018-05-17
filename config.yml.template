@@ -1,14 +1,19 @@
 dropbox:
   # code requires you provide a pair of app-key and app-secret here
   # You may create a app here: https://www.dropbox.com/developers/apps
-  # and get your app key and secret
-  app_key: <your-app-key-here>
-  app_secret: <your-app-secret-here>
+  # and generate your access token
+  #
+  access_token: <your-access-token-here>
 
+input: # a list
+  - ./input/description.txt
 
-input:
-  - /path/to/file1.txt
-  - ../path/to/file2.txt
+output: # a simple string
+  ./output
 
-output: /path/to/out/dir
-
+filter:
+  test_names:
+    - file.txt
+    - file.md
+    - aa/bb/cc.mat
+    - ff.mat
