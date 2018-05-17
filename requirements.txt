@@ -1,3 +1,5 @@
 # fabric
 fabric3
 
+dropbox
+PyYAML

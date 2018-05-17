@@ -1,0 +1,14 @@
+dropbox:
+  # code requires you provide a pair of app-key and app-secret here
+  # You may create a app here: https://www.dropbox.com/developers/apps
+  # and get your app key and secret
+  app_key: <your-app-key-here>
+  app_secret: <your-app-secret-here>
+
+
+input:
+  - /path/to/file1.txt
+  - ../path/to/file2.txt
+
+output: /path/to/out/dir
+

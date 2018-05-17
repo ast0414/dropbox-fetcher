@@ -31,3 +31,11 @@ project/plugins/project/
 __pycache__
 build/
 .eggs/
+
+/config.yml
+
+/output/*
+!/output/.placeholder
+
+/input/*
+!/input/.placeholder
