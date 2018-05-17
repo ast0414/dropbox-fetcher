@@ -136,7 +136,7 @@ class Fetcher(object):
                                 self.meta_rev[output_file] = rev
                                 self.meta_rev.sync()
                             else:
-                                print("skip... %s" % output_file)
+                                # print("skip... %s" % output_file)
                                 pass
                     else:
                         print("## Unexpected Meta: %s" % typename)

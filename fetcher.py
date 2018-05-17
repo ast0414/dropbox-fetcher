@@ -32,64 +32,6 @@ def start(cfg):
         for test_name in test_names:
             print("[ %-5r ]: %s" % (fetcher.test_filter_rule(test_name), test_name))
 
-    # # dbx = dropbox.Dropbox(fetcher.access_token)
-    # dbx = dropbox.Dropbox(fetcher.access_token)
-    # # print(dbx.users_get_current_account())
-    #
-    # link = 'https://www.dropbox.com/sh/u6cn2yj1w89jnoq/AAA30wnEcfNq-3UkX4Kn7L04a?dl=0&lst='
-    # # link = 'https://www.dropbox.com/sh/vbl5m3f2ujkg2ot/AAAREJfPbcAdtOEhleIyU11sa/Input?dl=0'
-    #
-    # # hashlib.sha1('https://www.dropbox.com/sh/u6cn2yj1w89jnoq/AAA30wnEcfNq-3UkX4Kn7L04a?dl=0&lst='.encode('utf-8')).hexdigest()[:10]
-    #
-    # # link = 'https://www.dropbox.com/sh/748f94925f0gesq/AAACxOBrrlgYrMtZ804XECFQa/Pusheen.jpg?dl=0'
-    #
-    # # meta = dbx.sharing_get_shared_link_file(link, '/')
-    # # meta = dbx.sharing_get_shared_link_metadata(link)
-    # # sharing_get_shared_link_file_to_file
-    # meta = dbx.sharing_get_shared_link_metadata(link)
-    # # print(meta)
-    #
-    # print("url:", meta.url)
-    # limit = 1000
-    # shared_link = SharedLink(meta.url)
-    #
-    # def scan_all(base):
-    #     files = dbx.files_list_folder(base, limit=limit, shared_link=shared_link)
-    #     while files.entries:
-    #         for entry in tqdm(files.entries,
-    #                           desc="scan: %s ## %s" % (shared_link.url, base)):  # type of entry: FileMetadata
-    #             id = entry.id
-    #             name = entry.name
-    #             typename = type(entry).__name__
-    #
-    #             if typename == 'FolderMetadata':
-    #                 print("FolderMetadata: %s" % name)
-    #                 scan_all("%s/%s" % (base, name))
-    #             elif typename == 'FileMetadata':  #
-    #                 rev = entry.rev
-    #                 size = entry.size
-    #                 if filter_by_mat(name):
-    #                     # print("@", base, "$$$ > ", id, "##", name, "$", size, "$", rev)
-    #
-    #                     # if base == "":
-    #                     #     cmeta = dbx.sharing_get_shared_link_file_to_file(output_folder + '/' + entry.name,
-    #                     #                                                      url=link,
-    #                     #                                                      path='/' + entry.name)  # SharedLinkMetadata
-    #                     #     print("cmeta:", cmeta)
-    #                     import time
-    #                     time.sleep(1)
-    #                     pass
-    #             else:
-    #                 print("## Unexpected Meta: %s" % typename)
-    #
-    #         if files.cursor:
-    #             files = dbx.files_list_folder_continue(files.cursor)
-    #             # print("continue ... ", files.cursor)
-    #         else:
-    #             break
-    #
-    # scan_all("")
-
     fetcher.fetch_all()
     return fetcher
 
