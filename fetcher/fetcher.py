@@ -155,7 +155,7 @@ class Fetcher(object):
 
         with open("%s/mapping.txt" % self.output, "w") as fmp:
             for i in range(num_urls):
-                fmp.write("%s\t%s" % (self.sha1s[i], self.urls[i]))
+                fmp.write("%s\t%s\n" % (self.sha1s[i], self.urls[i]))
                 pass
             fmp.close()
 
