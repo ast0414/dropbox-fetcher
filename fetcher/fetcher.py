@@ -3,6 +3,7 @@ from __future__ import print_function, with_statement
 import dropbox
 from dropbox.files import SharedLink
 import hashlib
+import os
 import re
 import shelve
 from tqdm import tqdm
@@ -124,16 +125,20 @@ class Fetcher(object):
                         if self.test_filter_rule(name):
                             rev = entry.rev
                             # size = entry.size
-                            relative_path = "" 
+                            relative_path = ""
                             if len(base) > 0:
-                                relative_path = base
+                                if base[0] == '/':
+                                    relative_path = base[1:]  # bug fix: '/Abc' instead of 'Abc'
+                                else:
+                                    print("huh? base[0]==%s" % base[0])
+                                    relative_path = base
                             output_file = "%s/%s" % (output_base, relative_path)
                             mkdirs(output_file)
                             output_file = "%s/%s" % (output_file, name)
                             meta_key = "%s/%s" % (relative_path, name)
                             current_rev = self.meta_rev.get(meta_key)
                             if rev != current_rev:
-                                self.safe_download(output_file, curr_url, path='/%s/%s' % (
+                                self.safe_download(output_file, curr_url, path='%s/%s' % (
                                     base, name))
                                 self.meta_rev[meta_key] = rev
                                 self.meta_rev.sync()

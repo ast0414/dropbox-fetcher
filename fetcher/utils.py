@@ -8,8 +8,9 @@ def mkdirs(dir_path):
     :return:
     """
     try:
-        if not os.path.exists(dir_path):
-            os.mkdir(dir_path)
+        clean_path = os.path.abspath(dir_path)
+        if not os.path.exists(clean_path):
+            os.makedirs(clean_path)
         return True
     except Exception as e:
         raise e
